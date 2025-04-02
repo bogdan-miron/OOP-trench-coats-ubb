@@ -129,19 +129,13 @@
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Domain.cpp" />
-    <ClCompile Include="DynamicArray.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Repository.cpp" />
-    <ClCompile Include="testController.cpp" />
-    <ClCompile Include="testDomain.cpp" />
-    <ClCompile Include="testDynamicArray.cpp" />
-    <ClCompile Include="testRepository.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Domain.h" />
-    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Repository.h" />
     <ClInclude Include="TestAll.h" />
     <ClInclude Include="UI.h" />

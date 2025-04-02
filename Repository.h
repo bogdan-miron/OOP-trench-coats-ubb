@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 #include "Domain.h"
-#include "DynamicArray.h"
+#include <vector>
 
 class Repository{
     private:
-        dynamicVector<TrenchCoat> trenchCoats;
+        std::vector<TrenchCoat> trenchCoats;
         std::string FileName;
         
         public:
@@ -30,7 +30,7 @@ class Repository{
 
             bool validID(int trenchID);
             TrenchCoat getTrenchCoat(int trenchID);
-            dynamicVector<TrenchCoat> getAllTrenchCoats();
+            std::vector<TrenchCoat> getAllTrenchCoats();
 
             int getSize();
             void setFileName(std::string newFileName);

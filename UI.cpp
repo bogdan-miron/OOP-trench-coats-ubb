@@ -82,14 +82,14 @@ void UI::printGoodbyeMessage() {
 
 void UI::printAllTrenchCoats(int codeOfController) {
     if (codeOfController == 1) {
-        dynamicVector<TrenchCoat> allTrenchCoats = this->controller.getAllTrenchCoats();
-        for (int i = 0; i < allTrenchCoats.getSize(); i++) {
+        std::vector<TrenchCoat> allTrenchCoats = this->controller.getAllTrenchCoats();
+        for (int i = 0; i < allTrenchCoats.size(); i++) {
             printTrenchCoat(allTrenchCoats[i]);
         }
     }
     else {
-        dynamicVector<TrenchCoat> allTrenchCoats = this->basket_controller.getAllTrenchCoats();
-        for (int i = 0; i < allTrenchCoats.getSize(); i++) {
+        std::vector<TrenchCoat> allTrenchCoats = this->basket_controller.getAllTrenchCoats();
+        for (int i = 0; i < allTrenchCoats.size(); i++) {
             TrenchCoat trenchCoat = allTrenchCoats[i];
             std::cout << "ID: " << trenchCoat.getTrenchID() << " || "
                 << "Size: " << trenchCoat.getTrenchSize() << " || "
@@ -277,11 +277,11 @@ void UI::cycleThroughTrenchCoats() {
     std::cin >> sizeToFilterBy;
 
     int index = 0, command, totalCost = 0;
-    dynamicVector<TrenchCoat> trenchCoats = (sizeToFilterBy != 0)
+    std::vector<TrenchCoat> trenchCoats = (sizeToFilterBy != 0)
         ? this->controller.filterBySize(sizeToFilterBy)
         : this->controller.getAllTrenchCoats();
 
-    if (trenchCoats.getSize() == 0) {
+    if (trenchCoats.size() == 0) {
         std::cout << "No matching trench coats!" << std::endl;
         return;
     }
@@ -291,10 +291,10 @@ void UI::cycleThroughTrenchCoats() {
 
     while (command != 4) {
         if (command == 1) {
-            index = (index == 0) ? trenchCoats.getSize() - 1 : index - 1;
+            index = (index == 0) ? trenchCoats.size() - 1 : index - 1;
         }
         else if (command == 2) {
-            index = (index == trenchCoats.getSize() - 1) ? 0 : index + 1;
+            index = (index == trenchCoats.size() - 1) ? 0 : index + 1;
         }
         else if (command == 3) {
             this->addTrenchCoatToShoppingBasket(trenchCoats[index]);
@@ -323,8 +323,8 @@ void UI::addTrenchCoatToShoppingBasket(TrenchCoat trenchCoatToAdd) {
 
 void UI::printShoppingBasket() {
     int totalCost = 0;
-    dynamicVector<TrenchCoat> shoppingBasket = this->basket_controller.getAllTrenchCoats();
-    for (int i = 0; i < shoppingBasket.getSize(); i++) {
+    std::vector<TrenchCoat> shoppingBasket = this->basket_controller.getAllTrenchCoats();
+    for (int i = 0; i < shoppingBasket.size(); i++) {
         this->printTrenchCoat(shoppingBasket[i]);
         totalCost += shoppingBasket[i].getTrenchPrice();
     }
@@ -332,8 +332,8 @@ void UI::printShoppingBasket() {
 }
 
 void UI::emptyBasketOfTrenchCoats() {
-    dynamicVector<TrenchCoat> shoppingBasket = this->basket_controller.getAllTrenchCoats();
-    for (int i = 0; i < shoppingBasket.getSize(); i++) {
+    std::vector<TrenchCoat> shoppingBasket = this->basket_controller.getAllTrenchCoats();
+    for (int i = 0; i < shoppingBasket.size(); i++) {
         this->controller.updateTrenchCoat(
             shoppingBasket[i].getTrenchID(),
             shoppingBasket[i].getTrenchID(),

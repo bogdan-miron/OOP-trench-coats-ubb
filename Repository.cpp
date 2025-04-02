@@ -7,13 +7,13 @@ void Repository::addTrenchCoat(int id, int sizeOfTrench, const std::string& colo
     float priceOfTrench, int quantityOfTrench, const std::string& photography_linkOfTrench) {
     TrenchCoat trenchToAdd(id, sizeOfTrench, colourOfTrench, priceOfTrench,
         quantityOfTrench, photography_linkOfTrench);
-    this->trenchCoats.append(trenchToAdd);
+    this->trenchCoats.push_back(trenchToAdd);
 }
 
 void Repository::removeTrenchCoat(int trenchID) {
-    for (int i = 0; i < this->trenchCoats.getSize(); i++) {
+    for (int i = 0; i < this->trenchCoats.size(); i++) {
         if (this->trenchCoats[i].getTrenchID() == trenchID) {
-            this->trenchCoats.remove(i);
+            this->trenchCoats.erase(trenchCoats.begin() + i);
             return;
         }
     }
@@ -28,7 +28,7 @@ void Repository::updateTrenchCoat(int trenchID, int newID, int newSizeOfTrench,
 }
 
 bool Repository::validID(int trenchID) {
-    for (int i = 0; i < this->trenchCoats.getSize(); i++) {
+    for (int i = 0; i < this->trenchCoats.size(); i++) {
         if (this->trenchCoats[i].getTrenchID() == trenchID) {
             return true;
         }
@@ -37,7 +37,7 @@ bool Repository::validID(int trenchID) {
 }
 
 TrenchCoat Repository::getTrenchCoat(int trenchID) {
-    for (int i = 0; i < this->trenchCoats.getSize(); i++) {
+    for (int i = 0; i < this->trenchCoats.size(); i++) {
         if (this->trenchCoats[i].getTrenchID() == trenchID) {
             return this->trenchCoats[i];
         }
@@ -45,12 +45,12 @@ TrenchCoat Repository::getTrenchCoat(int trenchID) {
     return TrenchCoat(-1, -1, "", -1, -1, "");
 }
 
-dynamicVector<TrenchCoat> Repository::getAllTrenchCoats() {
+std::vector<TrenchCoat> Repository::getAllTrenchCoats() {
     return this->trenchCoats;
 }
 
 int Repository::getSize() {
-    return this->trenchCoats.getSize();
+    return this->trenchCoats.size();
 }
 
 void Repository::setFileName(std::string newFileName) {
@@ -64,7 +64,7 @@ std::string Repository::getFileName() const {
 void Repository::writeToFile() {
     std::ofstream file(this->FileName);
     if (file.is_open()) {
-        for (int i = 0; i < this->trenchCoats.getSize(); i++) {
+        for (int i = 0; i < this->trenchCoats.size(); i++) {
             file << this->trenchCoats[i].getTrenchID() << " "
                 << this->trenchCoats[i].getTrenchSize() << " "
                 << this->trenchCoats[i].getTrenchColour() << " "
@@ -84,7 +84,7 @@ void Repository::readFromFile() {
         std::string colour, photographyLink;
         while (file >> id >> size >> colour >> price >> quantity >> photographyLink) {
             TrenchCoat trenchToAdd(id, size, colour, price, quantity, photographyLink);
-            this->trenchCoats.append(trenchToAdd);
+            this->trenchCoats.push_back(trenchToAdd);
         }
     }
     file.close();

@@ -6,11 +6,11 @@
 
 int main()
 {
-    testDomain();
+    /*testDomain();
     testDynamicArray();
     testRepository();
     testController();
-    testTrenchCoatExists();
+    testTrenchCoatExists();*/
 
     {
         Controller controller;

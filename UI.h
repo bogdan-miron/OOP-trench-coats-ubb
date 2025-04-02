@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Controller.h"
 #include "Domain.h"
-#include "DynamicArray.h"
+#include <vector>
 #include "Repository.h"
 
 class UI

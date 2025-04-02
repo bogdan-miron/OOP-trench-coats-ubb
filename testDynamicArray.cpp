@@ -8,7 +8,7 @@ using namespace std;
 
 void testDynamicArray()
 {
-    dynamicVector<TrenchCoat> dynamicVector{1};
+    std::vector<TrenchCoat> std::vector{1};
 
     TrenchCoat trenchCoat1(1, 2, "red", 3, 4, "link");
     TrenchCoat trenchCoat2(2, 3, "blue", 4, 5, "link2");
@@ -28,40 +28,40 @@ void testDynamicArray()
     TrenchCoat trenchCoat16(16, 17, "olive", 18, 19, "link16");
     TrenchCoat trenchCoat17(17, 18, "navy", 19, 20, "link17");
     
-    dynamicVector.append(trenchCoat1);
-    dynamicVector.append(trenchCoat2);
-    dynamicVector.append(trenchCoat3);
-    dynamicVector.append(trenchCoat4);
-    dynamicVector.append(trenchCoat5);
-    dynamicVector.append(trenchCoat6);
-    dynamicVector.append(trenchCoat7);
-    dynamicVector.append(trenchCoat8);
-    dynamicVector.append(trenchCoat9);
-    dynamicVector.append(trenchCoat10);
-    dynamicVector.append(trenchCoat11);
-    dynamicVector.append(trenchCoat12);
-    dynamicVector.append(trenchCoat13);
-    dynamicVector.append(trenchCoat14);
-    dynamicVector.append(trenchCoat15);
-    dynamicVector.append(trenchCoat16);
-    dynamicVector.append(trenchCoat17);
+    std::vector.append(trenchCoat1);
+    std::vector.append(trenchCoat2);
+    std::vector.append(trenchCoat3);
+    std::vector.append(trenchCoat4);
+    std::vector.append(trenchCoat5);
+    std::vector.append(trenchCoat6);
+    std::vector.append(trenchCoat7);
+    std::vector.append(trenchCoat8);
+    std::vector.append(trenchCoat9);
+    std::vector.append(trenchCoat10);
+    std::vector.append(trenchCoat11);
+    std::vector.append(trenchCoat12);
+    std::vector.append(trenchCoat13);
+    std::vector.append(trenchCoat14);
+    std::vector.append(trenchCoat15);
+    std::vector.append(trenchCoat16);
+    std::vector.append(trenchCoat17);
 
-    assert(dynamicVector.getSize() == 17);
-    assert(dynamicVector.getCapacity() == 32);
+    assert(std::vector.getSize() == 17);
+    assert(std::vector.getCapacity() == 32);
 
-    dynamicVector.remove(0);
-    assert(dynamicVector.getSize() == 16);
-    assert(dynamicVector.getCapacity() == 32);
+    std::vector.remove(0);
+    assert(std::vector.getSize() == 16);
+    assert(std::vector.getCapacity() == 32);
 
-    dynamicVector.remove(15);
-    assert(dynamicVector.getSize() == 15);
-    assert(dynamicVector.getCapacity() == 32);
+    std::vector.remove(15);
+    assert(std::vector.getSize() == 15);
+    assert(std::vector.getCapacity() == 32);
 
-    dynamicVector.update(0, trenchCoat1);
-    assert(dynamicVector[0] == trenchCoat1);
+    std::vector.update(0, trenchCoat1);
+    assert(std::vector[0] == trenchCoat1);
 
-    dynamicVector.update(-1, trenchCoat1);
-    dynamicVector.remove(-1);
-    assert(dynamicVector.getSize() == 15);
+    std::vector.update(-1, trenchCoat1);
+    std::vector.remove(-1);
+    assert(std::vector.getSize() == 15);
     std::cout << "Implementation of std::vector passed!" << std::endl;
 }

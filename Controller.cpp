@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include <vector>
 
 using namespace std;
 
@@ -57,17 +58,17 @@ TrenchCoat Controller::getTrenchCoat(int trenchID) {
     return repository.getTrenchCoat(trenchID);
 }
 
-dynamicVector<TrenchCoat> Controller::getAllTrenchCoats() {
+std::vector<TrenchCoat> Controller::getAllTrenchCoats() {
     return repository.getAllTrenchCoats();
 }
 
-dynamicVector<TrenchCoat> Controller::filterBySize(int trenchSize) {
-    dynamicVector<TrenchCoat> filteredTrenchCoats;
-    dynamicVector<TrenchCoat> allTrenchCoats = repository.getAllTrenchCoats();
+std::vector<TrenchCoat> Controller::filterBySize(int trenchSize) {
+    std::vector<TrenchCoat> filteredTrenchCoats;
+    std::vector<TrenchCoat> allTrenchCoats = repository.getAllTrenchCoats();
 
     for (int i = 0; i < repository.getSize(); i++) {
         if (allTrenchCoats[i].getTrenchSize() == trenchSize) {
-            filteredTrenchCoats.append(allTrenchCoats[i]);
+            filteredTrenchCoats.push_back(allTrenchCoats[i]);
         }
     }
 
