@@ -3,9 +3,21 @@
 #include <iostream>
 #include <utility>
 #include <cstdlib>
+#include <iomanip>
 
 using namespace std;
 #define MAX_NAME_LEN 60
+
+const std::string RESET = "\033[0m";
+const std::string RED = "\033[31m";
+const std::string GREEN = "\033[32m";
+const std::string YELLOW = "\033[33m";
+const std::string BLUE = "\033[34m";
+const std::string MAGENTA = "\033[35m";
+const std::string CYAN = "\033[36m";
+const std::string WHITE = "\033[37m";
+const std::string BOLD = "\033[1m";
+const std::string UNDERLINE = "\033[4m";
 
 UI::UI(Controller controller, Controller basket_controller) {
     this->controller = std::move(controller);
@@ -13,71 +25,71 @@ UI::UI(Controller controller, Controller basket_controller) {
 }
 
 void UI::printWelcomeMessage() {
-    std::cout << "========================================" << std::endl;
-    std::cout << "   ProperTrenchCoat - Admin Dashboard   " << std::endl;
-    std::cout << "========================================" << std::endl;
+    std::cout << "\033[1;34m========================================\033[0m" << std::endl;
+    std::cout << "\033[1;34m   ProperTrenchCoat - Admin Dashboard   \033[0m" << std::endl;
+    std::cout << "\033[1;34m========================================\033[0m" << std::endl;
 }
 
 void UI::printQuestioningMessage() {
-    std::cout << "\n*** Welcome to Proper Trench Coats! ***" << std::endl;
-    std::cout << "--------------------------------------" << std::endl;
+    std::cout << "\n\033[1;34m*** Welcome to Proper Trench Coats! ***\033[0m" << std::endl;
+    std::cout << "\033[36m--------------------------------------\033[0m" << std::endl;
     std::cout << "Select mode:" << std::endl;
-    std::cout << "  1. Administrator" << std::endl;
-    std::cout << "  2. User" << std::endl;
-    std::cout << "  0. Exit" << std::endl;
-    std::cout << "> ";
+    std::cout << "\033[33m  1. Administrator\033[0m" << std::endl;
+    std::cout << "\033[33m  2. User\033[0m" << std::endl;
+    std::cout << "\033[33m  0. Exit\033[0m" << std::endl;
+    std::cout << "\033[32m> \033[0m";
 }
 
 void UI::printAddToCartButton() {
-    std::cout << "\n[+] Add to Cart" << std::endl;
+    std::cout << "\n\033[1;32m[+]\033[0m \033[32mAdd to Cart\033[0m" << std::endl;
 }
 
 void UI::printTrenchCoat(TrenchCoat trenchCoatToPrint) {
-    std::cout << "\n--- Trench Coat Details ---" << std::endl;
-    std::cout << "ID: " << trenchCoatToPrint.getTrenchID() << std::endl;
-    std::cout << "Size: " << trenchCoatToPrint.getTrenchSize() << std::endl;
-    std::cout << "Colour: " << trenchCoatToPrint.getTrenchColour() << std::endl;
-    std::cout << "Price: $" << trenchCoatToPrint.getTrenchPrice() << std::endl;
-    std::cout << "Quantity: " << trenchCoatToPrint.getTrenchQuantity() << std::endl;
-    std::cout << "Photo: " << trenchCoatToPrint.getTrenchPhotographyLink() << std::endl;
+    std::cout << "\n\033[1;32m--- Trench Coat Details ---\033[0m" << std::endl;
+    std::cout << std::left << std::setw(10) << "ID:" << "\033[35m" << trenchCoatToPrint.getTrenchID() << "\033[0m" << std::endl;
+    std::cout << std::left << std::setw(10) << "Size:" << "\033[35m" << trenchCoatToPrint.getTrenchSize() << "\033[0m" << std::endl;
+    std::cout << std::left << std::setw(10) << "Colour:" << "\033[35m" << trenchCoatToPrint.getTrenchColour() << "\033[0m" << std::endl;
+    std::cout << std::left << std::setw(10) << "Price:" << "\033[35m$" << trenchCoatToPrint.getTrenchPrice() << "\033[0m" << std::endl;
+    std::cout << std::left << std::setw(10) << "Quantity:" << "\033[35m" << trenchCoatToPrint.getTrenchQuantity() << "\033[0m" << std::endl;
+    std::cout << std::left << std::setw(10) << "Photo:" << "\033[35m" << trenchCoatToPrint.getTrenchPhotographyLink() << "\033[0m" << std::endl;
 }
 
 void UI::printAdminMenu() {
-    std::cout << "\n=== ADMIN MENU ===" << std::endl;
-    std::cout << "1. Add a trench coat" << std::endl;
-    std::cout << "2. Remove a trench coat" << std::endl;
-    std::cout << "3. Update a trench coat" << std::endl;
-    std::cout << "4. View a trench coat" << std::endl;
-    std::cout << "5. List all trench coats" << std::endl;
-    std::cout << "6. Save to database" << std::endl;
-    std::cout << "7. Load from database" << std::endl;
-    std::cout << "8. Exit" << std::endl;
-    std::cout << "------------------" << std::endl;
-    std::cout << "> ";
+    std::cout << "\n\033[1;32m=== ADMIN MENU ===\033[0m" << std::endl;
+    std::cout << "\033[33m  1. Add a trench coat\033[0m" << std::endl;
+    std::cout << "\033[33m  2. Remove a trench coat\033[0m" << std::endl;
+    std::cout << "\033[33m  3. Update a trench coat\033[0m" << std::endl;
+    std::cout << "\033[33m  4. View a trench coat\033[0m" << std::endl;
+    std::cout << "\033[33m  5. List all trench coats\033[0m" << std::endl;
+    std::cout << "\033[33m  6. Save to database\033[0m" << std::endl;
+    std::cout << "\033[33m  7. Load from database\033[0m" << std::endl;
+    std::cout << "\033[33m  8. Exit\033[0m" << std::endl;
+    std::cout << "\033[36m------------------\033[0m" << std::endl;
+    std::cout << "\033[32m> \033[0m";
 }
 
 void UI::printUserMenu() {
-    std::cout << "\n=== USER MENU ===" << std::endl;
-    std::cout << "1. Browse trench coats" << std::endl;
-    std::cout << "2. View shopping cart" << std::endl;
-    std::cout << "3. Checkout" << std::endl;
-    std::cout << "4. Exit" << std::endl;
-    std::cout << "------------------" << std::endl;
-    std::cout << "> ";
+    std::cout << "\n\033[1;32m=== USER MENU ===\033[0m" << std::endl;
+    std::cout << "\033[33m  1. Browse trench coats\033[0m" << std::endl;
+    std::cout << "\033[33m  2. View shopping cart\033[0m" << std::endl;
+    std::cout << "\033[33m  3. Checkout\033[0m" << std::endl;
+    std::cout << "\033[33m  4. Exit\033[0m" << std::endl;
+    std::cout << "\033[36m------------------\033[0m" << std::endl;
+    std::cout << "\033[32m> \033[0m";
 }
 
 void UI::printUserBrowsingMenu() {
-    std::cout << "\n[1] Previous  [2] Next" << std::endl;
-    std::cout << "[3] Add to Cart  [4] Exit" << std::endl;
-    std::cout << "> ";
+    std::cout << "\n\033[33m[1]\033[0m Previous  \033[33m[2]\033[0m Next" << std::endl;
+    std::cout << "\033[33m[3]\033[0m Add to Cart  \033[33m[4]\033[0m Exit" << std::endl;
+    std::cout << "\033[32m> \033[0m";
 }
 
 void UI::printPurchaseMessage() {
-    std::cout << "\nPurchase confirmed. Thank you!" << std::endl;
+    std::cout << "\n\033[1;32m? Purchase confirmed. Thank you!\033[0m" << std::endl;
 }
 
 void UI::printGoodbyeMessage() {
-    std::cout << "\nGoodbye!" << std::endl;
+    std::cout << "\n\033[1;34mGoodbye!\033[0m" << std::endl;
 }
 
 void UI::printAllTrenchCoats(int codeOfController) {
