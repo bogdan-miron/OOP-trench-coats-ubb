@@ -46,3 +46,12 @@ public:
     void readFromFile() override;
 
 };
+
+class HTMLRepository : public Repository {
+public:
+    HTMLRepository() { this->FileName = "html-database.html"; }
+    HTMLRepository(std::string filename) { this->FileName = filename; }
+
+    void writeToFile() override;
+    void readFromFile() override;
+};

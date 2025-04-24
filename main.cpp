@@ -16,6 +16,7 @@ int main()
         std::cout << "Enter repo type:\n";
         std::cout << "1. Txt file.\n";
         std::cout << "2. CSV file\n";
+        std::cout << "3. HTML file\n";
         std::cout << "Choice: ";
         int choice;
         std::cin >> choice;
@@ -36,6 +37,18 @@ int main()
 
             UI ui(controller, basket_controller);
             ui.runApplication();
+        }
+        else if (choice == 3) {
+            HTMLRepository htmlRepo("html-database.html");
+            Controller controller(htmlRepo);
+            Repository basket_repository("basket.txt");
+            Controller basket_controller(basket_repository);
+
+            UI ui(controller, basket_controller);
+            ui.runApplication();
+        }
+        else {
+            exit(0);
         }
         
     }
