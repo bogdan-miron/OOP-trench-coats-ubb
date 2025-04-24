@@ -4,11 +4,11 @@
 
 class Controller{
     private:
-        Repository repository;
+        Repository& repository;
 
     public:
-        Controller();
-        Controller(Repository repository);
+        //Controller();
+        Controller(Repository& repo) : repository(repo) {};
 
         bool addTrenchCoat(int trenchID, 
                             int trenchSize, 

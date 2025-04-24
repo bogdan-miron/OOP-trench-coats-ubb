@@ -13,12 +13,31 @@ int main()
     testTrenchCoatExists();*/
 
     {
-        Controller controller;
-        Repository basket_repository("basket.txt");
-        Controller basket_controller(basket_repository);
+        std::cout << "Enter repo type:\n";
+        std::cout << "1. Txt file.\n";
+        std::cout << "2. CSV file\n";
+        std::cout << "Choice: ";
+        int choice;
+        std::cin >> choice;
+        if (choice == 1) {
+            Repository mainRepo("default.txt");
+            Controller controller(mainRepo);
+            Repository basket_repository("basket.txt");
+            Controller basket_controller(basket_repository);
 
-        UI ui(controller, basket_controller);
-        ui.runApplication();
+            UI ui(controller, basket_controller);
+            ui.runApplication();
+        }
+        else if (choice == 2) {
+            CSVRepository mainRepo("csv-database.csv");
+            Controller controller(mainRepo);
+            Repository basket_repository("basket.txt");
+            Controller basket_controller(basket_repository);
+
+            UI ui(controller, basket_controller);
+            ui.runApplication();
+        }
+        
     }
 
 	_CrtDumpMemoryLeaks();

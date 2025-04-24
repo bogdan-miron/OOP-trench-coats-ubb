@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <sstream>
 
 void Repository::addTrenchCoat(int id, int sizeOfTrench, const std::string& colourOfTrench,
     float priceOfTrench, int quantityOfTrench, const std::string& photography_linkOfTrench) {
@@ -94,4 +95,69 @@ Repository::Repository() : FileName("default.txt") {}
 
 Repository::Repository(std::string FileName) : FileName(FileName) {
     this->readFromFile();
+}
+
+void CSVRepository::writeToFile()
+{
+    std::ofstream file(FileName);
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open CSV file: " + this->FileName);
+    }
+    for (auto& coat : this->trenchCoats) {
+        file << coat.getTrenchID() << ","
+            << coat.getTrenchSize() << ","
+            << "\"" << coat.getTrenchColour() << "\","
+            << coat.getTrenchPrice() << ","
+            << coat.getTrenchQuantity() << ","
+            << "\"" << coat.getTrenchPhotographyLink() << "\"\n";
+    }
+
+    file.close();
+}
+
+void CSVRepository::readFromFile() 
+{
+    std::ifstream file(FileName);
+
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open CSV file: " + this->FileName);
+    }
+
+    /*trenchCoats.clear();*/
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream lineStream(line);
+        std::string token;
+
+        // ID
+        std::getline(lineStream, token, ',');
+        int id = std::stoi(token);
+
+        // parse size
+        std::getline(lineStream, token, ',');
+        int size = std::stoi(token);
+
+        // parse colour
+        std::getline(lineStream, token, ',');
+        std::string colour = token;
+        if (colour.front() == '"' && colour.back() == '"') {
+            colour = colour.substr(1, colour.size() - 2);
+        }
+
+        // parse price
+        std::getline(lineStream, token, ',');
+        float price = std::stof(token);
+
+        // parse quantity
+        std::getline(lineStream, token, ',');
+        int quantity = std::stoi(token);
+
+        // parse photo link
+        std::getline(lineStream, token);
+        std::string photographyLink = token;
+        if (photographyLink.front() == '"' && photographyLink.back() == '"') {
+            photographyLink = photographyLink.substr(1, photographyLink.size() - 2);
+        }
+        trenchCoats.emplace_back(id, size, colour, price, quantity, photographyLink);
+    }
 }

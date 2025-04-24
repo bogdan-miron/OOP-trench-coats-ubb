@@ -9,11 +9,11 @@
 class UI
 {
     private:
-        Controller basket_controller;
-        Controller controller;
+        Controller& basket_controller;
+        Controller& controller;
 
     public:
-        UI(Controller controller, Controller basket_controller);
+        UI(Controller& controller, Controller& basket_controller);
         void printHeader(const std::string& title);
         void printSectionTitle(const std::string& title);
         void printMenuOption(int num, const std::string& text);

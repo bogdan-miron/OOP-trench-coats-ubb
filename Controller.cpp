@@ -3,9 +3,9 @@
 
 using namespace std;
 
-Controller::Controller() : repository(Repository()) {}
+//Controller::Controller() : repository(Repository()) {}
 
-Controller::Controller(Repository repository) : repository(repository) {}
+//Controller::Controller(Repository repository) : repository(repository) {}
 
 bool Controller::addTrenchCoat(int trenchID,
     int trenchSize,

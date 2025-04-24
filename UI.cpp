@@ -19,9 +19,9 @@ const std::string WHITE = "\033[37m";
 const std::string BOLD = "\033[1m";
 const std::string UNDERLINE = "\033[4m";
 
-UI::UI(Controller controller, Controller basket_controller) {
-    this->controller = std::move(controller);
-    this->basket_controller = std::move(basket_controller);
+UI::UI(Controller& contr, Controller& basket_contr) : controller(contr), basket_controller(basket_contr) {
+    /*this->controller = std::move(controller);
+    this->basket_controller = std::move(basket_controller);*/
 }
 
 void UI::printWelcomeMessage() {
