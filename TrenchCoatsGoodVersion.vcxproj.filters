@@ -21,28 +21,16 @@
     <ClCompile Include="Domain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicArray.cpp">
+    <ClCompile Include="Repository.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Repository.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="testController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="testDomain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="testDynamicArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="testRepository.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UI.cpp">
+    <ClCompile Include="MySQLRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,9 +41,6 @@
     <ClInclude Include="Domain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Repository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MySQLRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

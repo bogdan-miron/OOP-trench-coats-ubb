@@ -1,0 +1,3 @@
+4,44,"bluetestbogdan",54,3,"https://csv.com/coat1.jpg"
+2,31,"rouje",5,1,"https://pls-mergi.com"
+67,30,"bordeaux",1000,5,"https://fortza.com"

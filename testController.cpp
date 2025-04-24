@@ -1,6 +1,7 @@
 #include <assert.h>
 #include "Controller.h"
 #include "TestAll.h"
+#include <iostream>
 
 void testController()
 {
@@ -42,10 +43,10 @@ void testController()
     controller.addTrenchCoat(7, 6, "red", 3, 4, "photo");
     assert(controller.addTrenchCoat(7, 6, "red", 3, 4, "photo") == false);
 
-    dynamicVector<TrenchCoat> filteredTrenchCoats = controller.filterBySize(6);
+    std::vector<TrenchCoat> filteredTrenchCoats = controller.filterBySize(6);
     assert(filteredTrenchCoats.getSize() == 3);
 
-    dynamicVector<TrenchCoat> allTrenchCoats = controller.getAllTrenchCoats();
+    std::vector<TrenchCoat> allTrenchCoats = controller.getAllTrenchCoats();
     assert(allTrenchCoats.getSize() == 7);
 }
 

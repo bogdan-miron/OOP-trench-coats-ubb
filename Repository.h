@@ -1,41 +1,57 @@
 #pragma once
 #include <string>
+#include <vector>
+
 #include "Domain.h"
-#include "DynamicArray.h"
 
-class Repository{
-    private:
-        dynamicVector<TrenchCoat> trenchCoats;
-        std::string FileName;
-        
-        public:
-            Repository();
-            Repository(std::string FileName);
+class Repository {
+protected:
 
-            void addTrenchCoat(int id,
-                    int sizeOfTrench,
-                    const std::string& colourOfTrench,
-                    float priceOfTrench,
-                    int quantityOfTrench,
-                    const std::string& photography_linkOfTrench);
+    std::vector<TrenchCoat> trenchCoats;
+    std::string FileName;
 
-            void removeTrenchCoat(int trenchID);
-            void updateTrenchCoat(int trenchID, 
-                                    int newID,
-                                    int newSizeOfTrench, 
-                                    const std::string& newColourOfTrench, 
-                                    float newPriceOfTrench, 
-                                    int newQuantityOfTrench, 
-                                    const std::string& newPhotography_linkOfTrench);
+public:
 
-            bool validID(int trenchID);
-            TrenchCoat getTrenchCoat(int trenchID);
-            dynamicVector<TrenchCoat> getAllTrenchCoats();
+    Repository();
+    Repository(std::string FileName);
 
-            int getSize();
-            void setFileName(std::string newFileName);
-            std::string getFileName() const;
-            void writeToFile();
-            void readFromFile();
+    virtual void addTrenchCoat(int id, int sizeOfTrench,
+        const std::string& colourOfTrench, float priceOfTrench,
+        int quantityOfTrench,
+        const std::string& photography_linkOfTrench);
 
+    virtual void removeTrenchCoat(int trenchID);
+    virtual void updateTrenchCoat(int trenchID, int newID, int newSizeOfTrench,
+        const std::string& newColourOfTrench,
+        float newPriceOfTrench, int newQuantityOfTrench,
+        const std::string& newPhotography_linkOfTrench);
+
+    virtual bool validID(int trenchID);
+    TrenchCoat getTrenchCoat(int trenchID);
+    virtual std::vector<TrenchCoat> getAllTrenchCoats();
+
+    int getSize();
+    void setFileName(std::string newFileName);
+    std::string getFileName() const;
+    virtual void writeToFile();
+    virtual void readFromFile();
+};
+
+class CSVRepository : public Repository {
+public:
+    CSVRepository() { this->FileName = "csv-database.csv"; }
+    CSVRepository(std::string filename) { this->FileName = filename; }
+
+    void writeToFile() override;
+    void readFromFile() override;
+
+};
+
+class HTMLRepository : public Repository {
+public:
+    HTMLRepository() { this->FileName = "html-database.html"; }
+    HTMLRepository(std::string filename) { this->FileName = filename; }
+
+    void writeToFile() override;
+    void readFromFile() override;
 };

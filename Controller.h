@@ -4,11 +4,11 @@
 
 class Controller{
     private:
-        Repository repository;
+        Repository& repository;
 
     public:
-        Controller();
-        Controller(Repository repository);
+        //Controller();
+        Controller(Repository& repo) : repository(repo) {};
 
         bool addTrenchCoat(int trenchID, 
                             int trenchSize, 
@@ -28,8 +28,8 @@ class Controller{
 
         int trenchCoatExists(int trenchID);
         TrenchCoat getTrenchCoat(int trenchID);
-        dynamicVector<TrenchCoat> getAllTrenchCoats();
-        dynamicVector<TrenchCoat> filterBySize(int trenchSize);
+        std::vector<TrenchCoat> getAllTrenchCoats();
+        std::vector<TrenchCoat> filterBySize(int trenchSize);
         
         int getSize();
         void setFileName(std::string newFileName);

@@ -1,0 +1,8 @@
+<html>
+<body>
+<table>
+  <tr><td>1</td><td>42</td><td>Red</td><td>99.99</td><td>10</td><td>coat1.jpg</td></tr>
+  <tr><td>2</td><td>38</td><td>Blue</td><td>89.99</td><td>5</td><td>coat2.jpg</td></tr>
+</table>
+</body>
+</html>
