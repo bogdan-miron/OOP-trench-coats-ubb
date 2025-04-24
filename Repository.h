@@ -15,20 +15,20 @@ public:
     Repository();
     Repository(std::string FileName);
 
-    void addTrenchCoat(int id, int sizeOfTrench,
+    virtual void addTrenchCoat(int id, int sizeOfTrench,
         const std::string& colourOfTrench, float priceOfTrench,
         int quantityOfTrench,
         const std::string& photography_linkOfTrench);
 
-    void removeTrenchCoat(int trenchID);
-    void updateTrenchCoat(int trenchID, int newID, int newSizeOfTrench,
+    virtual void removeTrenchCoat(int trenchID);
+    virtual void updateTrenchCoat(int trenchID, int newID, int newSizeOfTrench,
         const std::string& newColourOfTrench,
         float newPriceOfTrench, int newQuantityOfTrench,
         const std::string& newPhotography_linkOfTrench);
 
-    bool validID(int trenchID);
+    virtual bool validID(int trenchID);
     TrenchCoat getTrenchCoat(int trenchID);
-    std::vector<TrenchCoat> getAllTrenchCoats();
+    virtual std::vector<TrenchCoat> getAllTrenchCoats();
 
     int getSize();
     void setFileName(std::string newFileName);
